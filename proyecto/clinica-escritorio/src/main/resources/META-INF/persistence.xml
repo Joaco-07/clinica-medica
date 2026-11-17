@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence version="3.0"
+    xmlns="https://jakarta.ee/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        https://jakarta.ee/xml/ns/persistence
+        https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+
+    <persistence-unit name="clinica" transaction-type="RESOURCE_LOCAL">
+
+        <!-- Entidades de usuarios -->
+        <class>logica.Usuario</class>
+        <class>logica.Medico</class>
+        <class>logica.Paciente</class>
+
+        <!-- Entidades de prestaciones -->
+        <class>logica.Prestacion</class>
+        <class>logica.Estudio</class>
+        <class>logica.Terapia</class>
+
+        <!-- Otras entidades -->
+        <class>logica.Seguido</class>
+        <class>logica.OrdenMedica</class>
+        <class>logica.LineaOrden</class>
+
+        <properties>
+            <!-- Conexión a PostgreSQL -->
+            <property
+                name="jakarta.persistence.jdbc.driver"
+                value="org.postgresql.Driver" />
+
+            <property
+                name="jakarta.persistence.jdbc.url"
+                value="jdbc:postgresql://localhost:5432/clinicadb" />
+
+            <property
+                name="jakarta.persistence.jdbc.user"
+                value="postgres" />
+
+            <property
+                name="jakarta.persistence.jdbc.password"
+                value="clave_demo_cambiar_antes_de_usar" />
+
+            <!-- Crear o actualizar las tablas automáticamente -->
+            <property
+                name="hibernate.hbm2ddl.auto"
+                value="update" />
+
+            <!-- Mostrar el SQL generado por Hibernate -->
+            <property
+                name="hibernate.show_sql"
+                value="false" />
+
+            <property
+                name="hibernate.format_sql"
+                value="true" />
+        </properties>
+
+    </persistence-unit>
+
+</persistence>

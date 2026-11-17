@@ -1,0 +1,770 @@
+
+/* ========================================
+   ESTILOS GENERALES - CLÍNICA
+   ======================================== */
+
+:root {
+    --color-principal: #245a81;
+    --color-principal-hover: #194568;
+    --color-secundario: #2876ad;
+    --color-fondo: #f3f6fa;
+    --color-superficie: #ffffff;
+    --color-texto: #263445;
+    --color-texto-secundario: #64748b;
+    --color-borde: #dce4ed;
+    --color-error: #b42318;
+    --color-exito: #176b45;
+    --radio: 14px;
+    --sombra: 0 5px 20px rgba(28, 55, 80, 0.07);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: var(--color-principal);
+    line-height: 1.3;
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+p {
+    margin-top: 0;
+}
+
+a {
+    color: var(--color-secundario);
+}
+
+a:hover {
+    color: var(--color-principal-hover);
+}
+
+/* ========================================
+   NAVEGACIÓN COMPARTIDA
+   ======================================== */
+
+nav[aria-label="Navegación principal"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 16px 24px;
+    background: var(--color-superficie);
+    border-bottom: 1px solid var(--color-borde);
+    box-shadow: 0 2px 8px rgba(28, 55, 80, 0.04);
+}
+
+nav[aria-label="Navegación principal"] > a {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 24px;
+    color: var(--color-principal);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+}
+
+nav[aria-label="Navegación principal"] > a:hover {
+    background: #eaf3fa;
+    color: var(--color-principal-hover);
+}
+
+nav[aria-label="Navegación principal"] form {
+    margin: 0;
+}
+
+/* ========================================
+   BOTONES
+   ======================================== */
+
+button,
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 24px;
+    background: var(--color-secundario);
+    color: #ffffff;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+button:hover,
+.boton:hover {
+    background: var(--color-principal-hover);
+    color: #ffffff;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #8ec5ee;
+    outline-offset: 3px;
+}
+
+/* El cierre de sesión tiene un estilo secundario. */
+
+nav[aria-label="Navegación principal"] button {
+    background: #eaf0f6;
+    color: var(--color-principal);
+}
+
+nav[aria-label="Navegación principal"] button:hover {
+    background: #d8e5f0;
+}
+
+/* ========================================
+   CONTENEDORES Y PANELES
+   ======================================== */
+
+.contenedor-pagina {
+    width: min(1100px, calc(100% - 40px));
+    margin: 38px auto;
+}
+
+.encabezado-pagina {
+    margin-bottom: 28px;
+}
+
+.encabezado-pagina p {
+    color: var(--color-texto-secundario);
+}
+
+.panel {
+    padding: 28px;
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+/* ========================================
+   FORMULARIOS
+   ======================================== */
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--color-texto);
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    background: #ffffff;
+    color: var(--color-texto);
+    font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--color-secundario);
+    outline: 2px solid #d8eaf8;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+.formulario-filtros {
+    display: grid;
+    grid-template-columns: minmax(180px, 2fr) minmax(160px, 1fr) auto;
+    align-items: end;
+    gap: 16px;
+}
+
+.campo {
+    min-width: 0;
+}
+
+.acciones-formulario {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.boton-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 10px 18px;
+    border: 1px solid var(--color-borde);
+    border-radius: 24px;
+    background: #ffffff;
+    color: var(--color-principal);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton-secundario:hover {
+    background: #eaf3fa;
+    color: var(--color-principal-hover);
+}
+
+/* ========================================
+   INICIO DE SESIÓN
+   ======================================== */
+
+.pagina-autenticacion {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 48px 20px;
+}
+
+.tarjeta-autenticacion {
+    width: 100%;
+    max-width: 460px;
+    padding: 36px;
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: 18px;
+    box-shadow: var(--sombra);
+}
+
+.marca-clinica {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.marca-clinica h1 {
+    margin-bottom: 8px;
+}
+
+.marca-clinica p {
+    color: var(--color-texto-secundario);
+}
+
+.formulario-autenticacion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.formulario-autenticacion button {
+    width: 100%;
+    margin-top: 6px;
+}
+
+.enlace-secundario {
+    margin: 20px 0 0;
+    text-align: center;
+}
+
+/* ========================================
+   MENSAJES
+   ======================================== */
+
+.mensaje {
+    margin: 16px 0;
+    padding: 12px 16px;
+    border-radius: 9px;
+}
+
+.mensaje-error {
+    background: #fef0ef;
+    color: var(--color-error);
+    border: 1px solid #f4c7c3;
+}
+
+.mensaje-exito {
+    background: #eaf7ef;
+    color: var(--color-exito);
+    border: 1px solid #b8e0c7;
+}
+
+/* ========================================
+   RESULTADOS Y TARJETAS
+   ======================================== */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.tarjeta {
+    padding: 24px;
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+.tarjeta h3 {
+    margin-top: 0;
+}
+
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+}
+
+th,
+td {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--color-borde);
+    text-align: left;
+}
+
+th {
+    background: #eaf3fa;
+    color: var(--color-principal);
+}
+
+tbody tr:hover {
+    background: #f7fafc;
+}
+
+/* ========================================
+   DISEÑO RESPONSIVE
+   ======================================== */
+
+@media (max-width: 700px) {
+    nav[aria-label="Navegación principal"] {
+        padding: 12px;
+        gap: 6px;
+    }
+
+    nav[aria-label="Navegación principal"] > a {
+        padding: 8px 12px;
+    }
+
+    .contenedor-pagina {
+        width: calc(100% - 24px);
+        margin: 24px auto;
+    }
+
+    .panel,
+    .tarjeta-autenticacion {
+        padding: 22px;
+    }
+
+    .formulario-filtros,
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-filtros .acciones-formulario {
+        grid-column: auto;
+    }
+
+    .pagina-autenticacion {
+        padding: 28px 14px;
+    }
+}
+
+/* Gestión de prestaciones */
+.formulario-autenticacion {
+    max-width: 100%;
+}
+
+.tarjeta .formulario-autenticacion {
+    margin-bottom: 0;
+}
+
+.formulario-edicion {
+    min-width: 190px;
+    margin: 0;
+}
+
+.formulario-edicion .campo {
+    margin-bottom: 10px;
+}
+
+.formulario-edicion button {
+    margin-top: 4px;
+}
+
+.etiqueta-tipo {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #eaf3fa;
+    color: var(--color-principal);
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.boton-peligro {
+    background: #b42318;
+}
+
+.boton-peligro:hover {
+    background: #8f1c13;
+}
+
+@media (max-width: 700px) {
+    .formulario-edicion {
+        min-width: 160px;
+    }
+}
+
+
+.modal-confirmacion[hidden] {
+    display: none !important;
+}
+
+.modal-confirmacion {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.modal-contenido {
+    width: 100%;
+    max-width: 440px;
+    padding: 28px;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+}
+
+.modal-contenido h2 {
+    margin-top: 0;
+    color: #1e3a8a;
+}
+
+.modal-contenido p {
+    margin-bottom: 24px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.modal-contenido .acciones-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.modal-confirmacion .boton-peligro {
+    background: #dc2626;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    cursor: pointer;
+}
+
+/* Logo de la clínica en la navegación */
+
+.marca-logo {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 !important;
+    margin-right: 12px;
+    background: transparent !important;
+}
+
+.marca-logo img {
+    display: block;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+/* Tamaño definitivo del logo de la clínica */
+
+/* Tamaño definitivo del logo de la clínica */
+
+nav > a.marca-logo {
+    display: inline-flex !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    padding: 0 !important;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+nav > a.marca-logo img {
+    display: block !important;
+    width: 42px !important;
+    height: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+    object-fit: contain !important;
+}
+
+nav[aria-label="Navegación principal"] > a.activo {
+    background: #eaf3fa;
+    color: var(--color-principal-hover);
+    font-weight: 700;
+    box-shadow: inset 0 -3px 0 var(--color-principal);
+}
+
+.usuario-sesion {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: 0;
+}
+
+.usuario-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.usuario-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #eaf3fa;
+    color: var(--color-principal);
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.usuario-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.usuario-datos strong {
+    color: var(--color-texto);
+    font-size: 14px;
+}
+
+.usuario-datos span {
+    color: var(--color-texto-secundario);
+    font-size: 12px;
+}
+
+/* ========================================
+   USUARIO Y CIERRE DE SESIÓN
+   ======================================== */
+
+.usuario-sesion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 6px;
+    margin-left: 0;
+    padding-left: 16px;
+}
+
+.usuario-datos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.usuario-datos strong {
+    color: var(--color-principal);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.usuario-datos span {
+    color: #718096;
+    font-size: 12px;
+}
+
+.usuario-sesion form {
+    margin: 0;
+}
+
+.usuario-sesion .boton-cerrar-sesion {
+    min-height: auto;
+    padding: 5px 12px;
+    border: 1px solid #dc5555;
+    border-radius: 16px;
+    background: #fff0f0;
+    color: #c03939;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.usuario-sesion .boton-cerrar-sesion:hover {
+    background: #c03939;
+    color: white;
+}
+
+/* Información del usuario */
+.usuario-sesion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 0;
+}
+
+.usuario-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    background: #f0f5fa;
+    border: 1px solid #dce7f0;
+    border-radius: 18px;
+}
+
+.usuario-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #dceaf5;
+    color: var(--color-principal);
+    font-size: 12px;
+}
+
+.usuario-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.usuario-datos strong {
+    color: var(--color-principal);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.usuario-datos span {
+    color: #718096;
+    font-size: 10px;
+}
+
+/* Botón pequeño para cerrar sesión */
+.usuario-sesion form {
+    margin: 0;
+}
+
+.usuario-sesion .boton-cerrar-sesion {
+    padding: 5px 9px;
+    border: 1px solid #e5aaaa;
+    border-radius: 14px;
+    background: #fff0f0;
+    color: #c03939;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.usuario-sesion .boton-cerrar-sesion:hover {
+    background: #c03939;
+    color: white;
+}
+
+/* Mostrar u ocultar contraseña */
+.contenedor-password {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.contenedor-password input {
+    width: 100%;
+    padding-right: 75px;
+}
+
+/* Campo de contraseña con botón mostrar/ocultar */
+.contenedor-password {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.contenedor-password input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding-right: 12px;
+}
+
+.contenedor-password .boton-mostrar-password {
+    position: static;
+    transform: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 65px;
+    min-height: 42px;
+    margin: 0;
+    padding: 6px 10px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    background: #eaf3fa;
+    color: var(--color-principal);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.contenedor-password .boton-mostrar-password:hover {
+    background: #dceaf5;
+    color: var(--color-principal-hover);
+}
+/* Evitar que Mostrar ocupe todo el ancho del formulario */
+.formulario-autenticacion .contenedor-password .boton-mostrar-password {
+    width: auto;
+    min-width: 65px;
+    margin-top: 0;
+    justify-self: end;
+    position: static;
+    transform: none;
+}

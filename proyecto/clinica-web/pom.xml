@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.clinicapap</groupId>
+	<artifactId>clinica-web</artifactId>
+	<version>1.0</version>
+
+	<!-- war: el resultado es una aplicación web para desplegar en Tomcat -->
+	<packaging>war</packaging>
+
+	<properties>
+		<maven.compiler.release>21</maven.compiler.release>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- Dirección del WSDL del servidor. Tiene que estar publicado al compilar.
+		     Se puede cambiar sin tocar el archivo:
+		     mvn package -Dwsdl.url=http://192.168.1.50:9876/controlador?wsdl -->
+		<wsdl.url>http://localhost:9876/controlador?wsdl</wsdl.url>
+	</properties>
+
+	<dependencies>
+		<!-- La API de servlets y de JSP las provee Tomcat: no se empaquetan en el .war -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JSTL, para recorrer listas en los JSP sin escribir código Java en la vista.
+		     Tomcat 10 NO la trae, así que sí va dentro del .war -->
+		<dependency>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+
+		<!-- Cliente SOAP -->
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>4.0.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>4.0.5</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>clinica</finalName>
+		<plugins>
+			<!-- Lee el WSDL del servidor y genera las clases para invocarlo.
+			     Es el reemplazo moderno de lo que antes se hacía con Axis.
+			     Las clases generadas van a target/, NO al repositorio. -->
+			<plugin>
+				<groupId>com.sun.xml.ws</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>4.0.2</version>
+				<executions>
+					<execution>
+						<id>generar-stubs</id>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<wsdlUrls>
+								<wsdlUrl>${wsdl.url}</wsdlUrl>
+							</wsdlUrls>
+							<packageName>publicadores</packageName>
+							<sourceDestDir>${project.build.directory}/generated-sources/wsimport</sourceDestDir>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
